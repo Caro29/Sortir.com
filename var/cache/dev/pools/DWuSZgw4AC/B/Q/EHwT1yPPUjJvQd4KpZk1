@@ -1,0 +1,3 @@
+0
+%255BApp%255CEntity%255CEvent%255D%255B1%255D
+a:2:{i:0;O:27:"Doctrine\ORM\Mapping\Entity":2:{s:15:"repositoryClass";s:30:"App\Repository\EventRepository";s:8:"readOnly";b:0;}i:1;O:42:"Doctrine\ORM\Mapping\HasLifecycleCallbacks":0:{}}

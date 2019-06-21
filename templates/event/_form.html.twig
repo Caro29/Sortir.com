@@ -1,0 +1,67 @@
+{{ form_start(form) }}
+
+<div class="grid-container">
+    <div class="grid-x grid-margin-x align-center-middle">
+        <div class="cell small-12 medium-4 align-self-top">
+            {{ form_label(form.name) }}
+            {{ form_widget(form.name) }}
+            {{ form_errors(form.name) }}
+
+            {{ form_label(form.start) }}
+            {{ form_widget(form.start) }}
+            {{ form_errors(form.start) }}
+
+            {{ form_label(form.limitDate) }}
+            {{ form_widget(form.limitDate) }}
+            {{ form_errors(form.limitDate) }}
+
+            {{ form_label(form.duration) }}
+            {{ form_widget(form.duration) }}
+            {{ form_errors(form.duration) }}
+
+            {{ form_label(form.nbMax) }}
+            {{ form_widget(form.nbMax) }}
+            {{ form_errors(form.nbMax) }}
+
+            {{ form_label(form.description) }}
+            {{ form_widget(form.description) }}
+            {{ form_errors(form.description) }}
+        </div>
+        <div class="cell small-12 medium-4 align-self-top">
+            <label for="campus">Ville organisatrice</label>
+            <input type="text" id="campus" value="{{ app.user.campus.name }}" disabled/>
+            {{ form_label(form.address) }}
+            {{ form_widget(form.address) }}
+            {{ form_errors(form.address) }}
+
+            {{ form_label(form.city) }}
+            {{ form_widget(form.city) }}
+            {{ form_errors(form.city) }}
+
+            {{ form_label(form.picture) }}
+            {{ form_widget(form.picture) }}
+
+            {% if event.picture!=null %}
+                <img class="image" alt="" src="{{ asset('images/event/'~event.picture) }}"/>
+            {% endif %}
+        </div>
+    </div>
+</div>
+<br>
+<div class="grid-x grid-margin-x">
+    <div class="cell small-12 medium-3">
+    </div>
+    <div class="cell small-12 medium-6 align-middle">
+        <div id="bouton" class="row align-middle">
+            <div class="column small-12 medium-3">
+                {{ form_widget(form.enregistrer) }}
+                {{ form_widget(form.publier) }}
+
+                <a class="hollow button secondary" href="{{ path('event_index') }}">Retour</a>
+            </div>
+        </div>
+    </div>
+    <div class="cell small-12 medium-3">
+    </div>
+</div>
+{{ form_end(form) }}

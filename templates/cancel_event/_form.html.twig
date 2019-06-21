@@ -1,0 +1,24 @@
+{{ form_start(form) }}
+
+
+<div class="grid-container">
+    <div class="grid-x grid-margin-x align-center-middle">
+        <div class="cell small-12 medium-4 align-self-top">
+            {{ form_label(form.relation) }}
+            {{ form_widget(form.relation) }}
+            {{ form_label(form.reason) }}
+            {{ form_widget(form.reason) }}
+
+        </div>
+    </div>
+    <div class="grid-x grid-margin-x align-center-middle">
+        <div class="cell small-12 medium-4 align-self-top align-center-middle">
+            <button class="btn">{{ button_label|default('Confirmer l\'annulation') }}</button>
+            <br>
+            <a href="{{ path('cancel_event_index') }}">Retour</a>
+
+        </div>
+    </div>
+</div>
+
+{{ form_end(form) }}

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html class="no-js" lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>{% block title %}Sortir.com - {% endblock %}</title>
+    {% block stylesheets %}
+        <link rel="stylesheet" href="{{ asset('foundation/css/foundation.min.css') }}">
+        <!-- Mon CSS -->
+        <link rel="stylesheet" href="{{ asset('style.css') }}">
+        <link rel="stylesheet" href="{{ asset('grid-test.css') }}">
+    {% endblock %}
+</head>
+<body>
+{% block navbar %}
+    {% include '_menu.html.twig' %}
+{% endblock %}
+
+{% block error %}
+    <div class="grid-container">
+        {% for label,messages in app.flashes %}
+            {% for message in messages %}
+                <div data-closable class="callout alert-callout-subtle alert">
+                    <strong>Erreur : </strong> {{ message }}
+                    <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
+                        <span aria-hidden="true">⊗</span>
+                    </button>
+                </div>
+            {% endfor %}
+        {% endfor %}
+    </div>
+{% endblock %}
+
+{% block body %}
+
+{% endblock %}
+
+{% block footer %}
+    {% include '_footer.html.twig' %}
+{% endblock %}
+
+{% block javascripts %}
+    <script src="{{ asset('foundation/js/jquery-2.1.4.min.js') }}"></script>
+    <script src="{{ asset('foundation/js/vendor/foundation.js') }}"></script>
+    <script>
+        $(document).foundation();
+    </script>
+{% endblock %}
+</body>
+</html>

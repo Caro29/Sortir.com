@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}CancelEvent index{% endblock %}
+
+{% block body %}
+    <h1>CancelEvent index</h1>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Reason</th>
+            <th>actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for cancel_event in cancel_events %}
+            <tr>
+                <td>{{ cancel_event.id }}</td>
+                <td>{{ cancel_event.reason }}</td>
+                <td>
+                    <a href="{{ path('cancel_event_show', {'id': cancel_event.id}) }}">show</a>
+                    <a href="{{ path('cancel_event_edit', {'id': cancel_event.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}User index{% endblock %}
+
+{% block body %}
+<div id="title">
+    <h3>Liste des utilisateurs</h3>
+</div>
+
+<div class="grid-container">
+    <table class="table unstriped">
+         <thead>
+         <tr>
+              <th>Identifiant</th>
+             <th>Nom</th>
+             <th>Prénom</th>
+             <th>Téléphone</th>
+             <th>Email</th>
+             <th>Image</th>
+             <th>Active</th>
+
+         </tr>
+         </thead>
+         <tbody>
+         {% for user in users %}
+             <tr>
+                 <td>{{ user.username }}</td>
+                 <td>{{ user.lastName }}</td>
+                 <td>{{ user.firstName }}</td>
+                 <td>{{ user.phone }}</td>
+                 <td>{{ user.email }}</td>
+                 <td><img src="{{ asset('images/profil/'~user.picture) }}"></td>
+                 <td>{{ user.active ? 'Yes' : 'No' }}</td>
+
+             </tr>
+         {% else %}
+             <tr>
+                 <td>Aucun utilisateur</td>
+             </tr>
+         {% endfor %}
+         </tbody>
+    </table>
+</div>
+{% endblock %}

@@ -1,0 +1,38 @@
+# See the docs at https://github.com/geocoder-php/BazingaGeocoderBundle
+bazinga_geocoder:
+    # The local IP (127.0.0.1) will be replaced by the fake_ip
+    # see https://github.com/geocoder-php/BazingaGeocoderBundle/blob/5.0.0/Resources/doc/index.md#fake-local-ip
+    fake_ip: 123.123.123.123
+
+    profiling:
+        enabled: ~                # Default is same as kernel.debug
+
+    providers:
+        # ...
+        acme:
+            factory: Bazinga\GeocoderBundle\ProviderFactory\NominatimFactory           # Required
+            options:
+#                httplug_client: '@httplug.client' # When using HTTPlugBundle
+                root_url: 'https://nominatim.openstreetmap.org'
+#                user_agent: 'sortir'
+#            cache: 'app.cache'
+#            cache_lifetime: 3600
+#            cache_precision: 4    # Precision of the coordinates to cache.
+#            limit: 5
+#            locale: 'sv'
+#            logger: 'logger'
+#            plugins:
+#                - my_custom_plugin
+            aliases:
+                - acme
+                - acme_geocoder
+#              options:
+#                foo: bar
+#                biz: baz
+#         ...
+#        free_chain:
+#            aliases:
+#                - free_geo_chain
+#            factory: Bazinga\GeocoderBundle\ProviderFactory\ChainFactory
+#            options:
+#                services: ['@acme', '@acme_ii']

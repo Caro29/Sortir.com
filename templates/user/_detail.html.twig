@@ -1,0 +1,42 @@
+<div class="grid-container">
+    <div class="grid-x grid-margin-x align-center">
+        <table class="table unstriped">
+            <tbody>
+            <tr>
+                <th>Identifiant</th>
+                <td>{{ user.username }}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ user.lastName }}</td>
+            </tr>
+            <tr>
+                <th>Prénom</th>
+                <td>{{ user.firstName }}</td>
+            </tr>
+            <tr>
+                <th>Téléphone</th>
+                <td>{{ user.phone }}</td>
+            </tr>
+            <tr>
+                <th>Adresse email</th>
+                <td>{{ user.email }}</td>
+            </tr>
+            <tr>
+                <th>Photo de profil</th>
+                <td>
+                    {% if user.picture!=null %}
+                        <img src="{{ asset('images/profil/'~user.picture) }}">
+                    {% else %}
+                        <img src="{{ asset('images/profil/default_profil.png') }}">
+                    {% endif %}
+                </td>
+            </tr>
+            <tr>
+                <th>Utilisateur actif</th>
+                <td>{{ user.active ? 'Yes' : 'No' }}</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

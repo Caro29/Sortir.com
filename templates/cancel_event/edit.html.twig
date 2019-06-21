@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit CancelEvent{% endblock %}
+
+{% block body %}
+    <h1>Edit CancelEvent</h1>
+
+    {{ include('cancel_event/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('cancel_event_index') }}">back to list</a>
+
+    {{ include('cancel_event/_delete_form.html.twig') }}
+{% endblock %}

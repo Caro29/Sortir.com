@@ -1,0 +1,6 @@
+<form method="post" action="{{ path('event_delete', {'id': event.id}) }}"
+      onsubmit="return confirm('Confirmer la suppression de la sortie');">
+    <input type="hidden" name="_method" value="DELETE">
+    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ event.id) }}">
+    <button class="hollow button secondary">Supprimer ma sortie</button>
+</form>

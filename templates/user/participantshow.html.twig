@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Participant{% endblock %}
+
+{% block body %}
+<div id="title">
+    <h3>Détail du profil</h3>
+</div>
+
+{{ include('user/_detail.html.twig') }}
+
+<div class="grid-container">
+    <div class="grid-x grid-margin-x align-center">
+        <a href="{{ app.request.headers.get('referer') }}" class="hollow button secondary">Retour</a>
+    </div>
+</div>
+{% endblock %}

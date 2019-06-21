@@ -1,0 +1,81 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Main page{% endblock %}
+
+{% block body %}
+    <div id="title" class="row align-center">
+        <h3>Filtrer les Sorties </h3>
+    </div>
+    {{ form_start(form) }}
+
+    <div class="grid-container">
+        <div class="grid-x grid-margin-x">
+            <div class="cell small-12 medium-4 large-4  align-center-middle  menu-centered">
+                {{ form_label(form.name) }}
+                {{ form_widget(form.name) }}
+                {{ form_label(form.search) }}
+                {{ form_widget(form.search) }}
+
+            </div>
+
+            <div class="cell small-12 medium-4 large-4  align-center-middle menu-centered">
+
+
+                {{ form_label(form.minDate) }}
+                {{ form_widget(form.minDate) }}
+                {{ form_label(form.maxDate) }}
+                {{ form_widget(form.maxDate) }}
+            </div>
+            <div class="cell small-12 medium-4  large-4  align-center-middle menu-centered">
+
+                {# ------- CASES A COCHER ------#}
+
+                {{ form_widget(form.organiser) }}
+
+                {{ form_widget(form.isParticipant) }}
+
+                {{ form_widget(form.isNotParticipant) }}
+
+                {{ form_widget(form.archived) }}
+            </div>
+
+        </div>
+    </div>
+
+
+    <div class="grid-container">
+        <div class="grid-x grid-margin-x">
+            <div class="align-center-middle text-center cell small-12 medium-12 large-12 ">
+                {{ form_widget(form.submit) }}
+
+            </div>
+
+        </div>
+    </div>
+    {{ form_end(form) }}
+
+    <div class="grid-container">
+        <div class="grid-x grid-padding-x small-up-2 medium-up-3  align-center-middle">
+            <div class="grid-x grid-padding-x small-up-1 medium-up-2 large-up-3 ">
+                {% for event in events %}
+
+                    <div class="card-section cell ">
+                        {% if event.picture!=null %}
+                            <img src="{{ asset('images/event/'~event.picture) }}">
+                        {% else %}
+                            <img src="{{ asset('images/event/default_event.jpg') }}">
+                        {% endif %}
+                        <div class="card-section cell-block">
+                            <a href="{{ path('event_show', {'id': event.id }) }}"><h4>{{ event.name }}</h4></a>
+                            <p>{{ event.description }}</p>
+                            <p>{{ event.location.address }}</p>
+                            <p>{{ event.location.city.name }}</p>
+                            <p>{{ event.start ? event.start|date('d/m/Y H:i') : '' }}</p>
+                        </div>
+                    </div>
+                {% else %}<h4>Aucune sortie prévue</h4>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

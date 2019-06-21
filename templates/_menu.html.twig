@@ -1,0 +1,33 @@
+<header>
+    <div class="title-bar" data-responsive-toggle="main-menu" data-hide-for="medium">
+        <button class="menu-icon" type="button" data-toggle></button>
+        <div class="title-bar-title">Menu</div>
+    </div>
+
+    <div class="row" id="main-menu">
+        <div class="  menu-hover-lines medium-horizontal dropdown menu align-center-middle text-center small vertical menu horizontal nested text-center "
+             data-responsive-menu="accordion medium-dropdown ">
+
+            <ul class=" small vertical menu horizontal nested text-center "></ul>
+            <li><img src="{{ asset('logo.png') }}" title="logo site" alt="logo"/></li>
+
+
+            {% if (is_granted('ROLE_ADMIN') or (is_granted('ROLE_USER'))) %}
+                <li class="{% if app.request.attributes.get('_route')=='event_index' %}active{% endif %}"><a
+                            href="{{ path('event_index') }}">Accueil</a></li>
+                {% if (is_granted('ROLE_ADMIN')) %}
+                    <li class="{% if app.request.attributes.get('_route')=='app_register' %}active{% endif %}"><a
+                                href="{{ path('app_register') }}">Nouvel Utilisateur</a></li>
+                {% endif %}
+                <li class="{% if app.request.attributes.get('_route')=='event_new' %}active{% endif %}"><a
+                            href="{{ path('event_new') }}">Nouvelle sortie</a></li>
+                <li class="{% if app.request.attributes.get('_route')=='user_show' %}active{% endif %}"><a
+                            href="{{ path('user_show', {'id': app.user.id}) }}">Mon profil</a></li>
+
+                <li class="{% if app.request.attributes.get('_route')=='logout' %}active{% endif %}"><a
+                            href="{{ path('logout') }}">Déconnexion</a></li>
+            {% endif %}
+
+        </div>
+    </div>
+</header>

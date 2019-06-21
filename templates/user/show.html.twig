@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}User{% endblock %}
+
+{% block body %}
+<div id="title">
+    <h3>Mon profil</h3>
+</div>
+
+{{ include('user/_detail.html.twig') }}
+
+<div class="grid-container">
+    <div class="grid-x grid-margin-x align-center">
+        {% if app.user.id==user.id %}
+            <a href="{{ path('user_edit', {'id': user.id}) }}" class="hollow button secondary">Modifier mon profil</a>
+            <a href="{{ path('password', {'id': user.id}) }}" class="hollow button secondary">Modifier mon mot de passe</a>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

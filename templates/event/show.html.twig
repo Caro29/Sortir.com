@@ -1,0 +1,103 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Event{% endblock %}
+
+{% block body %}
+    <div class=" grid-container">
+        <div id="title">
+            <h3>Détail de la sortie</h3>
+        </div>
+        <div class="grid-x grid-margin-x">
+            <div class="cell small-12 medium-6">
+                <div class="text-center">
+                    {% if event.picture!=null %}
+                        <img src="{{ asset('images/event/'~event.picture) }}">
+                    {% else %}
+                        <img src="{{ asset('images/event/default_event.jpg') }}">
+                    {% endif %}
+                </div>
+                <table class="table unstriped">
+                    <tbody>
+                    <tr>
+                        <th>Nom de la sortie</th>
+                        <td>{{ event.name }}</td>
+                    </tr>
+                    <tr>
+                        <th>Date et heure de la sortie</th>
+                        <td>{{ event.start ? event.start|date('d/m/Y H:i') : '' }}</td>
+                    </tr>
+                    <tr>
+                        <th>Date et heure limite d'inscription</th>
+                        <td>{{ event.limitDate ? event.limitDate|date('d/m/Y H:i') : '' }}</td>
+                    </tr>
+                    <tr>
+                        <th>Nb de participants maximum</th>
+                        <td>{{ event.nbMax }}</td>
+                    </tr>
+                    <tr>
+                        <th>Durée</th>
+                        <td>{{ event.duration ? event.duration.format('%d jour(s) %h heure(s) %i minute(s)') : '' }}</td>
+                    </tr>
+                    <tr>
+                        <th>Description</th>
+                        <td>{{ event.description }}</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="cell small-12 medium-6 align-top">
+                <iframe width=100% height=100% frameborder="0" scrolling="no" marginheight="0" marginwidth="0"
+                        src="https://www.openstreetmap.org/export/embed.html?bbox={{ event.location.longitude-0.005 }}%2C{{ event.location.latitude-0.005 }}%2C{{ event.location.longitude+0.005 }}%2C{{ event.location.latitude+0.005 }}&amp;layer=mapnik&amp;marker={{ event.location.latitude }}%2C{{ event.location.longitude }}"
+                        style="border: 1px solid black"></iframe>
+            </div>
+        </div>
+        <br>
+        <div class="grid-x grid-margin-x align-center-middle">
+            <div class="cell small-12 align-middle ">
+                <div id="bouton" class="row align-middle">
+                    <div class="column small-12 medium-3">
+                        {% if app.user.id!=event.creator.id %}
+                            {% if date(event.limitDate) < date() %}
+                                <p>Date limite d'inscription dépassée</p>
+                            {% else %}
+                                {{ form(form) }}
+                            {% endif %}
+                        {% else %}
+                            <a class="hollow button secondary" href="{{ path('event_edit', {'id': event.id }) }}">Modifier
+                                ma sortie</a>
+                            <a class="hollow button secondary" href="{{ path('cancel_event_new')~'?id='~event.id }}">Annuler
+                                la sortie</a>
+
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="grid-x grid-margin-x align-center-middle">
+            <div class="cell small-12 medium-8 align-middle">
+                <p class="text-center">Liste des participants inscrits</p>
+                <table class="table unstriped">
+                    <thead>
+                    <tr>
+                        <th>Nom</th>
+                        <th>Prénom</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for participant in participants %}
+                        <tr>
+                            <td>
+                                <a href="{{ path('participant_show', {'id': participant.id }) }}">{{ participant.lastName }}</a>
+                            </td>
+                            <td>
+                                <a href="{{ path('participant_show', {'id': participant.id }) }}">{{ participant.firstName }}</a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
