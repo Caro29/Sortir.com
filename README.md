@@ -1,7 +1,7 @@
 # Sortir.com
-projet réalisé lors de ma formation Concepteur Développeur d'Applications à l'ENI de Quimper
+projet réalisé lors de ma formation Concepteur Développeur d'Applications à l'ENI de Quimper (avril 2019)
 
-applications permettent de proposer des sorties au sein de l'ENI et de s'inscrire à des sorties
+application permettent de proposer des sorties au sein de l'ENI et de s'inscrire à des sorties
 
 équipe de 5 personnes travail en méthode AGILE
 
