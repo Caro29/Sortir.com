@@ -6,5 +6,5 @@ projet réalisé lors de ma formation Concepteur Développeur d'Applications à 
 Technos utilisées :
 - PHP Symfony (PHP Storm, Composer)
 - Framework Foundation
-Utilisation de GitKraken
+- Utilisation de GitKraken
 
